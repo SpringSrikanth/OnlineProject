@@ -1,5 +1,7 @@
 package com.jwt.jwtProject;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,9 +20,11 @@ import com.jwt.jwtProject.service.MyUserDetailsService;
 @EnableWebSecurity
 public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 	
+	private static final Logger log = LoggerFactory.getLogger(SecurityConfigurer.class);
+
 	@Autowired
 	private MyUserDetailsService MyUserDetailsService;
-	
+
 	@Autowired
 	private JwtFileter JwtFileter;
 
@@ -33,22 +37,52 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 	public PasswordEncoder passwordEncoder() {
 		return NoOpPasswordEncoder.getInstance();
 	}
-	
-	
+
+
 	@Override
 	@Bean
 	public AuthenticationManager authenticationManagerBean() throws Exception {
 		return super.authenticationManagerBean();
 	}
-	
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		//for giving permission to one url to authenticate
-		http.csrf().disable().authorizeRequests()
+		/*
+		  http.csrf().disable().authorizeRequests() .antMatchers("/authenticate")
+		  .permitAll().anyRequest().authenticated()
+		  .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.
+		  STATELESS);
+		 */
+
+		http.cors()
+		.and()
+		.csrf()
+		.disable()
+		.sessionManagement()
+		.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+		.and()
+		.authorizeRequests()
+		.antMatchers("/",
+				"/favicon.ico",
+				"/**/*.png",
+				"/**/*.gif",
+				"/**/*.svg",
+				"/**/*.jpg",
+				"/**/*.html",
+				"/**/*.css",
+				"/**/*.js")
+		.permitAll()
+		.antMatchers(
+				"/api/user/checkUsernameAvailability",
+				"/api/user/checkEmailAvailability",
+				"/users/create/user"
+				)
+		.permitAll()
 		.antMatchers("/authenticate")
-		.permitAll().anyRequest().authenticated()
-		.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-		
+		.permitAll()
+		.anyRequest().authenticated();
+
 		http.addFilterBefore(JwtFileter, UsernamePasswordAuthenticationFilter.class);
 	}
 }

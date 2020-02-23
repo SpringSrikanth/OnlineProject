@@ -1,10 +1,14 @@
 package com.jwt.models;
 
+import com.jwt.jwtProject.modals.User;
+
 public class AuthenticationRequest {
 
 	private String userName;
 	private String password;
-	public AuthenticationRequest() {
+	public AuthenticationRequest(User user) {
+		this.userName=user.getUsername();
+		this.password=user.getPassword();
 	}
 	public AuthenticationRequest(String userName, String password) {
 		this.userName = userName;

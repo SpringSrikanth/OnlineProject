@@ -13,9 +13,10 @@ import com.koseksi.pachipulusula.entity.User;
 public class UserDetailsDaoImpl implements UserDetailsDao {
 	@Autowired
 	private JdbcTemplate  jdbcTemplate;
-	private final static String INSERT_USER = "INSERT INTO USERS VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
-	private final static String SELECT_USER_BY_ID = "SELECT USERID,USERNAME,FIRSTNAME,LASTNAME,EMAIL,GENDER,DATEOFBIRTH,SECONDARYMAIL,MOBILE,CREATED_DATE,UPDATED_DATE FROM USERS WHERE USERID=?";
-	private final static String UPDATE_USER_BY_ID = "UPDATE USERS SET USERNAME=?,FIRSTNAME=?,LASTNAME=?,EMAIL=?,GENDER=?,DATEOFBIRTH=?,SECONDARYMAIL=?,MOBILE=?,UPDATED_DATE=? WHERE USERID = ?";
+	private final static String INSERT_USER = "INSERT INTO USERS(username,firstname,lastname,email,password,gender,dateofbirth,secondary_mail,mobile,created_date,updated_date) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+	private final static String SELECT_USER_BY_ID = "SELECT USERID,USERNAME,FIRSTNAME,LASTNAME,EMAIL,GENDER,DATEOFBIRTH,secondary_mail,MOBILE,CREATED_DATE,UPDATED_DATE FROM USERS WHERE USERID=?";
+	private final static String SELECT_USER_BY_USERNAME_PASSWORD = "SELECT username,password FROM USERS WHERE username=?";
+	private final static String UPDATE_USER_BY_ID = "UPDATE USERS SET USERNAME=?,FIRSTNAME=?,LASTNAME=?,EMAIL=?,GENDER=?,DATEOFBIRTH=?,secondary_mail=?,MOBILE=?,UPDATED_DATE=? WHERE USERID = ?";
 	private final static String DELETE_USER_BY_ID = "DELETE FROM USERS WHERE USERID = ?";
 	
 	@Override
@@ -32,8 +33,7 @@ public class UserDetailsDaoImpl implements UserDetailsDao {
 
 	@Override
 	public int saveUser(User user) throws Exception {
-		int value=jdbcTemplate.update(INSERT_USER, 
-				user.getUserId(),
+		int value=jdbcTemplate.update(INSERT_USER,
 				user.getUsername(),
 				user.getFirstname(),
 				user.getLastname(),
@@ -94,4 +94,17 @@ public class UserDetailsDaoImpl implements UserDetailsDao {
 		return jdbcTemplate.update(DELETE_USER_BY_ID,id);
 	}
 
+	@Override
+	public User checkUserDetails(String username) throws Exception {
+		System.out.println("========="+username);
+		User user =null;
+		user=jdbcTemplate.queryForObject(SELECT_USER_BY_USERNAME_PASSWORD, (ResultSet rs,int rowNO)->{
+			User user1=new User();
+			user1.setUsername(rs.getString(1));
+			user1.setPassword(rs.getString(2));
+			return user1;
+		},username);
+		System.out.println(user.getUsername()+"========="+user.getPassword());
+		return user;
+	}
 }

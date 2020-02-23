@@ -3,6 +3,8 @@
  */
 package com.koseksi.pachipulusula.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +25,8 @@ import com.koseksi.pachipulusula.service.UserService;
 @RequestMapping("users")
 public class UserDetailsController {
 	
+	private static final Logger log = LoggerFactory.getLogger(UserDetailsController.class);
+
 	@Autowired
 	private UserService userService;
 	
@@ -34,13 +38,13 @@ public class UserDetailsController {
 	
 	@GetMapping(path = "/user/{id}", produces = "application/json")
 	public UserDTO getUserDetails(@PathVariable(value = "id") int valueId) {
-		System.out.println("UserDetailsController.getUserDetails()");
+		log.info("UserDetailsController.getUserDetails()");
 		UserDTO userDto=null;
 		try {
 			userDto=userService.getUserDetailsByUserId(valueId);
 			
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			log.info(e.getMessage());
 			userDto=new UserDTO();
 		}
 		return userDto;
@@ -48,7 +52,7 @@ public class UserDetailsController {
 	
 	
 	
-	@PostMapping(path = "/user" ,consumes =  "application/json",produces =  "application/json")
+	@PostMapping(path = "/create/user" ,consumes =  "application/json",produces =  "application/json")
 	public CustomBean storeUser(@RequestBody UserDTO userDTO) {
 		CustomBean customBean =new CustomBean();
 		String message="";
@@ -58,7 +62,7 @@ public class UserDetailsController {
 			customBean.setMessage(message);
 			
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			log.info(e.getMessage());
 			customBean.setMessage(message);
 			customBean.setSaatus("failure");
 			customBean.setStatusCode(400);
@@ -75,7 +79,7 @@ public class UserDetailsController {
 			customBean.setMessage(message);
 			
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			log.info(e.getMessage());
 			customBean.setMessage(message);
 			customBean.setSaatus("failure");
 			customBean.setStatusCode(400);
@@ -94,7 +98,7 @@ public class UserDetailsController {
 			customBean.setMessage(message);
 			
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			log.info(e.getMessage());
 			customBean.setMessage(message);
 			customBean.setSaatus("failure");
 			customBean.setStatusCode(400);

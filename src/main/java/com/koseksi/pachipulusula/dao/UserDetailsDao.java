@@ -13,4 +13,5 @@ public interface UserDetailsDao {
 	public User getUserDetailsByUserId(int id) throws Exception;
 	public int updateUserDetailsByUserObj(User user) throws Exception;
 	public int deleteUserDetailsByUserId(int id) throws Exception;
+	public User checkUserDetails(String username) throws Exception;
 }

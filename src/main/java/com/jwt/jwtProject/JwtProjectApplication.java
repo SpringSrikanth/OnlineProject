@@ -5,12 +5,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+import com.jwt.jwtProject.modals.UserRepository;
 import com.koseksi.pachipulusula.config.RootAppConfig;
 import com.koseksi.pachipulusula.config.WebMVCConfig;
 
 @SpringBootApplication
 @Import({WebMVCConfig.class,RootAppConfig.class})
+@EnableJpaRepositories(basePackageClasses = UserRepository.class)
 public class JwtProjectApplication {
 	private static final Logger logger = LoggerFactory.getLogger(JwtProjectApplication.class);
     
