@@ -7,13 +7,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+import com.jwt.jwtProject.modals.RoleRepository;
 import com.jwt.jwtProject.modals.UserRepository;
+import com.jwt.jwtProject.modals.UserRoleRepository;
 import com.koseksi.pachipulusula.config.RootAppConfig;
 import com.koseksi.pachipulusula.config.WebMVCConfig;
 
 @SpringBootApplication
 @Import({WebMVCConfig.class,RootAppConfig.class})
-@EnableJpaRepositories(basePackageClasses = UserRepository.class)
+@EnableJpaRepositories(basePackageClasses = {UserRepository.class,RoleRepository.class,UserRoleRepository.class})
 public class JwtProjectApplication {
 	private static final Logger logger = LoggerFactory.getLogger(JwtProjectApplication.class);
     

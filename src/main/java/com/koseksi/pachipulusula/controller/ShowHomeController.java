@@ -12,7 +12,7 @@ public class ShowHomeController {
 	
 	private static final Logger log = LoggerFactory.getLogger(ShowHomeController.class);
 
-	@RequestMapping("home")
+	@RequestMapping("/home")
 	@ResponseBody
 	public  String showHome() {
 	

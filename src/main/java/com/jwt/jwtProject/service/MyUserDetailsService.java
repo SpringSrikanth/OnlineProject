@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.koseksi.pachipulusula.dao.UserDetailsDao;
+import com.koseksi.pachipulusula.util.EncodeDecodeUtil;
 
 @Service
 public class MyUserDetailsService implements UserDetailsService {
@@ -21,6 +22,8 @@ public class MyUserDetailsService implements UserDetailsService {
 	@Autowired
 	private UserDetailsDao userDetailsDao;
 	
+	@Autowired
+	private EncodeDecodeUtil encodeDecodeUtil;
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -31,7 +34,7 @@ public class MyUserDetailsService implements UserDetailsService {
 			System.out.println(e);
 			throw new UsernameNotFoundException("Invalid Username and password");
 		}
-		return new User(user.getUsername(),user.getPassword() ,new ArrayList<>());
+		return new User(user.getUsername(),encodeDecodeUtil.decodeText(user.getPassword()) ,new ArrayList<>());
 	}
 
 }

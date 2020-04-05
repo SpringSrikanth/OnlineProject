@@ -13,7 +13,7 @@ public class UserDTO {
 	private String gender;
 	private String dateOfBirth;
 	private String secondaryMail;
-	private String Mobile;
+	private String mobile;
 	private Date created_date;
 	private Date updated_date;
 	
@@ -71,12 +71,7 @@ public class UserDTO {
 	public void setSecondaryMail(String secondaryMail) {
 		this.secondaryMail = secondaryMail;
 	}
-	public String getMobile() {
-		return Mobile;
-	}
-	public void setMobile(String mobile) {
-		Mobile = mobile;
-	}
+	
 	public Date getCreated_date() {
 		return created_date;
 	}
@@ -88,6 +83,12 @@ public class UserDTO {
 	}
 	public void setUpdated_date(Date updated_date) {
 		this.updated_date = updated_date;
+	}
+	public String getMobile() {
+		return mobile;
+	}
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
 	}
 	
 	

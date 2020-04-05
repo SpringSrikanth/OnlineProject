@@ -76,7 +76,10 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 		.antMatchers(
 				"/api/user/checkUsernameAvailability",
 				"/api/user/checkEmailAvailability",
-				"/users/create/user"
+				"/users/create/user",
+				"/hello123",
+				"/home",
+				"/health"
 				)
 		.permitAll()
 		.antMatchers("/authenticate")

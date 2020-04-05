@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.koseksi.pachipulusula.customjavabean.CustomBean;
 import com.koseksi.pachipulusula.dto.UserDTO;
 import com.koseksi.pachipulusula.service.UserService;
+import com.koseksi.pachipulusula.util.EncodeDecodeUtil;
 
 /*
  * @author Srikanth Yenagandula
@@ -29,6 +30,9 @@ public class UserDetailsController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private EncodeDecodeUtil encodeDecodeUtil;
 	
 	
 	@GetMapping(path="/health", produces = "application/json")
@@ -57,6 +61,9 @@ public class UserDetailsController {
 		CustomBean customBean =new CustomBean();
 		String message="";
 		try {
+			
+			String password=encodeDecodeUtil.encodeText(userDTO.getPassword());
+			userDTO.setPassword(password);
 			int value=userService.insertUser(userDTO);
 			message = value>=1?"User Registration Successfully":"User Registration Fail";
 			customBean.setMessage(message);
@@ -105,4 +112,5 @@ public class UserDetailsController {
 		}
 		return customBean;
 	}
+	
 }

@@ -35,7 +35,7 @@ public class HelloResource {
 	@Autowired
 	private JwtUtil jwtUtil;
 	
-	@RequestMapping({"/hello"})
+	@RequestMapping({"/hello123"})
 	public String Hello() {
 		return "welcome";
 	}

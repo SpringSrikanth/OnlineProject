@@ -25,8 +25,8 @@ public class User {
 	private String secondaryMail;                  
 	private String Default_Role;
 	private String mobile;
-	private Date created_date;
-	private Date  updated_date;
+	private Date created_date=new Date();
+	private Date updated_date=new Date();
 	private Date dateofbirth;
 
 	public int getUserid() {

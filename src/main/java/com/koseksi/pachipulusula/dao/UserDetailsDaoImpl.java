@@ -1,6 +1,7 @@
 package com.koseksi.pachipulusula.dao;
 
 import java.sql.ResultSet;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,8 @@ public class UserDetailsDaoImpl implements UserDetailsDao {
 
 	@Override
 	public int saveUser(User user) throws Exception {
+		user.setCreated_date(new Date());
+		user.setUpdated_date(new Date());
 		int value=jdbcTemplate.update(INSERT_USER,
 				user.getUsername(),
 				user.getFirstname(),
