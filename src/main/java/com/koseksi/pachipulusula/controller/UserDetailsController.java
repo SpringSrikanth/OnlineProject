@@ -3,6 +3,9 @@
  */
 package com.koseksi.pachipulusula.controller;
 
+import java.util.Date;
+import java.util.Optional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +17,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jwt.jwtProject.modals.Role;
+import com.jwt.jwtProject.modals.RoleRepository;
+import com.jwt.jwtProject.modals.User;
+import com.jwt.jwtProject.modals.UserRepository;
+import com.jwt.jwtProject.modals.UserRoleRepository;
+import com.jwt.jwtProject.modals.User_Role;
 import com.koseksi.pachipulusula.customjavabean.CustomBean;
 import com.koseksi.pachipulusula.dto.UserDTO;
 import com.koseksi.pachipulusula.service.UserService;
@@ -34,6 +43,14 @@ public class UserDetailsController {
 	@Autowired
 	private EncodeDecodeUtil encodeDecodeUtil;
 	
+	@Autowired
+	private UserRepository userRepository;
+	
+	@Autowired
+	private RoleRepository roleRepository;
+	
+	@Autowired
+	private UserRoleRepository userRoleRepository;
 	
 	@GetMapping(path="/health", produces = "application/json")
 	public CustomBean getHealth() {
@@ -54,8 +71,6 @@ public class UserDetailsController {
 		return userDto;
 	}
 	
-	
-	
 	@PostMapping(path = "/create/user" ,consumes =  "application/json",produces =  "application/json")
 	public CustomBean storeUser(@RequestBody UserDTO userDTO) {
 		CustomBean customBean =new CustomBean();
@@ -66,6 +81,16 @@ public class UserDetailsController {
 			userDTO.setPassword(password);
 			int value=userService.insertUser(userDTO);
 			message = value>=1?"User Registration Successfully":"User Registration Fail";
+			if(value>=1) {
+				User user=userRepository.findByUsername(userDTO.getUsername()).get();
+				Role role=roleRepository.findByRoleName("USER").get();
+				User_Role  user_Role=new User_Role();
+				user_Role.setCreated_date(new Date());
+				user_Role.setModified_date(new Date());
+				user_Role.setUserId(user.getUserid());
+				user_Role.setRoleId(role.getRoleId());
+				userRoleRepository.save(user_Role);
+			}
 			customBean.setMessage(message);
 			
 		} catch (Exception e) {
