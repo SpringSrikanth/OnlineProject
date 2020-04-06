@@ -4,9 +4,16 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.id.SequenceGenerator;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+
+@Document(collection = "Blogs")
 public class BlogDetails implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	@Id
 	private int blogId;
 	private String blogTitle;
 	private String blogDescription;
@@ -18,6 +25,8 @@ public class BlogDetails implements Serializable {
 	private String mainImage;
 	private Date createdDate;
 	private Date updatedDate;
+	private boolean isPublished=false; 
+	private boolean emailNotified=false;
 	public int getBlogId() {
 		return blogId;
 	}
@@ -84,6 +93,20 @@ public class BlogDetails implements Serializable {
 	public void setUpdatedDate(Date updatedDate) {
 		this.updatedDate = updatedDate;
 	}
+	public boolean isEmailNotified() {
+		return emailNotified;
+	}
+	public void setEmailNotified(boolean emailNotified) {
+		this.emailNotified = emailNotified;
+	}
+	public boolean isPublished() {
+		return isPublished;
+	}
+	public void setPublished(boolean isPublished) {
+		this.isPublished = isPublished;
+	}
+
+	
 	
 	
 }

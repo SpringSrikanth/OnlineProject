@@ -2,14 +2,26 @@ package com.koseksi.pachipulusula.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.FindAndModifyOptions;
+import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
+
+import com.jwt.models.MongoSequence;
 
 @Service
 public class UtilService {
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
+	
+	@Autowired
+	private MongoOperations mongoOperations;
 	
 	@SuppressWarnings("deprecation")
 	public Date convertedToDateFromString(String Date){
@@ -40,5 +52,29 @@ public class UtilService {
 		return strDate;
 		
 	}
-	
+
+	@SuppressWarnings("null")
+	public String getNextSequenceId(String key){
+		MongoSequence mongoSequence=null;
+		try {
+			Query query=new Query(Criteria.where(key));
+			Update update=new Update();
+			update.inc("seq",1);
+			FindAndModifyOptions options=new FindAndModifyOptions();
+			options.returnNew(true);
+			mongoSequence=mongoOperations.findAndModify(query, update, options,MongoSequence.class);
+			if(mongoSequence==null)
+			{
+				int randomNumber=new Random().nextInt(22233);
+				mongoSequence.setSeq(Long.valueOf(randomNumber));
+			}	
+		} catch (Exception e) {
+			System.out.println(e);
+			mongoSequence=new MongoSequence();
+			int randomNumber=new Random().nextInt(222);
+			mongoSequence.setSeq(Long.valueOf(randomNumber));
+		}
+		
+		return String.valueOf(mongoSequence.getSeq());
+	}
 }
