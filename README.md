@@ -1,21 +1,16 @@
-[![Build Status](https://travis-ci.com/givanthak/spring-boot-rest-api-tutorial.svg?branch=master)](https://travis-ci.com/givanthak/spring-boot-rest-api-tutorial)
-[![Known Vulnerabilities](https://snyk.io/test/github/givanthak/spring-boot-rest-api-tutorial/badge.svg)](https://snyk.io/test/github/givanthak/spring-boot-rest-api-tutorial)
-
-
-
-# Sample REST CRUD API with Spring Boot, Mysql, JPA and Hibernate 
+# Spring REST CRUD API with Spring Boot, Mysql, JPA ,Spring Security, JWT, Mongodb, Hibernate 
 
 ## Steps to Setup
 
 **1. Clone the application**
 
 ```bash
-https://github.com/givanthak/spring-boot-rest-api-tutorial.git
+https://github.com/SpringSrikanth/OnlineProject.git
 ```
 
 **2. Create Mysql database**
 ```bash
-create database user_database
+create database mydb
 ```
 
 **3. Change mysql username and password as per your installation**
@@ -38,7 +33,7 @@ Alternatively, you can run the app without packaging it using -
 mvn spring-boot:run
 ```
 
-The app will start running at <http://localhost:8080>.
+The app will start running at <http://localhost:9090>.
 
 ## Explore Rest APIs
 
@@ -54,6 +49,23 @@ The app defines following CRUD APIs.
     
     DELETE /api/v1/users/{userId}
 
-You can find the tutorial for this application on my blog -
 
-<https://www.prathapgivantha.wordpress.com>
+## Used Dependencies
+
+    mysql-connector-java(5.1.28)
+    
+    h2database
+    
+    jjwt(9)
+    
+    jaxb-api
+    
+    commons-codec
+    
+    spring-boot-starter-data-mongodb
+    
+    spring-boot-devtools
+    
+    Spring Secutiry
+    
+    Log4j
