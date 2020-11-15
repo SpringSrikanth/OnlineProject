@@ -16,6 +16,7 @@ public class UserDTO {
 	private String mobile;
 	private Date created_date;
 	private Date updated_date;
+	private int active;
 	
 	public int getUserId() {
 		return userId;
@@ -90,9 +91,12 @@ public class UserDTO {
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
 	}
+	public int getActive() {
+		return active;
+	}
+	public void setActive(int active) {
+		this.active = active;
+	}
 	
-	
-	
-
 
 }

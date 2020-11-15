@@ -14,10 +14,10 @@ import com.koseksi.pachipulusula.entity.User;
 public class UserDetailsDaoImpl implements UserDetailsDao {
 	@Autowired
 	private JdbcTemplate  jdbcTemplate;
-	private final static String INSERT_USER = "INSERT INTO USERS(username,firstname,lastname,email,password,gender,dateofbirth,secondary_mail,mobile,created_date,updated_date) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
-	private final static String SELECT_USER_BY_ID = "SELECT USERID,USERNAME,FIRSTNAME,LASTNAME,EMAIL,GENDER,DATEOFBIRTH,secondary_mail,MOBILE,CREATED_DATE,UPDATED_DATE FROM USERS WHERE USERID=?";
+	private final static String INSERT_USER = "INSERT INTO USERS(username,firstname,lastname,email,password,gender,dateofbirth,secondary_mail,mobile,created_date,updated_date,active,default_role) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	private final static String SELECT_USER_BY_ID = "SELECT USERID,USERNAME,FIRSTNAME,LASTNAME,EMAIL,GENDER,DATEOFBIRTH,secondary_mail,MOBILE,CREATED_DATE,UPDATED_DATE,ACTIVE FROM USERS WHERE USERID=?";
 	private final static String SELECT_USER_BY_USERNAME_PASSWORD = "SELECT username,password FROM USERS WHERE username=?";
-	private final static String UPDATE_USER_BY_ID = "UPDATE USERS SET USERNAME=?,FIRSTNAME=?,LASTNAME=?,EMAIL=?,GENDER=?,DATEOFBIRTH=?,secondary_mail=?,MOBILE=?,UPDATED_DATE=? WHERE USERID = ?";
+	private final static String UPDATE_USER_BY_ID = "UPDATE USERS SET USERNAME=?,FIRSTNAME=?,LASTNAME=?,EMAIL=?,GENDER=?,DATEOFBIRTH=?,secondary_mail=?,MOBILE=?,UPDATED_DATE=?,ACTIVE=? WHERE USERID = ?";
 	private final static String DELETE_USER_BY_ID = "DELETE FROM USERS WHERE USERID = ?";
 	
 	@Override
@@ -47,7 +47,9 @@ public class UserDetailsDaoImpl implements UserDetailsDao {
 				user.getSecondaryMail(),
 				user.getMobile(),
 				user.getCreated_date(),
-				user.getUpdated_date()
+				user.getUpdated_date(),
+				user.getActive(),
+				"USER"
 				);
 		return value;
 	}
@@ -69,6 +71,7 @@ public class UserDetailsDaoImpl implements UserDetailsDao {
 			user1.setMobile(rs.getString(9));
 			user1.setCreated_date(rs.getDate(10));
 			user1.setUpdated_date(rs.getDate(11));
+			user1.setActive(rs.getInt(12));
 			return user1;
 		},id);
 		return user;
@@ -87,7 +90,8 @@ public class UserDetailsDaoImpl implements UserDetailsDao {
 				user.getSecondaryMail(),
 				user.getMobile(),
 				user.getUpdated_date(),
-				user.getUserId()
+				user.getUserId(),
+				user.getActive()
 				);
 		return value;
 	}

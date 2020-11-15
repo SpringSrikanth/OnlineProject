@@ -49,6 +49,7 @@ public class UsersRolesController {
 			userRoleRepository.save(user_Role);
 			message = "Role Created Successfully";
 			customBean.setMessage(message);
+			customBean.setStatusCode(200);
 
 		} catch (Exception e) {
 			log.info(e.getMessage());
@@ -76,6 +77,7 @@ public class UsersRolesController {
 			}
 			message = "Role updated to users Successfully";
 			customBean.setMessage(message);
+			customBean.setStatusCode(200);
 
 		} catch (Exception e) {
 			log.info(e.getMessage());
@@ -96,6 +98,7 @@ public class UsersRolesController {
 			userRoleRepository.delete(user_Role);
 			message = "User Removed Successfully";
 			customBean.setMessage(message);
+			customBean.setStatusCode(200);
 
 		} catch (Exception e) {
 			log.info(e.getMessage());
@@ -114,6 +117,7 @@ public class UsersRolesController {
 			userRoleRepository.deleteAll();
 			message = "Users Removed Successfully";
 			customBean.setMessage(message);
+			customBean.setStatusCode(200);
 
 		} catch (Exception e) {
 			log.info(e.getMessage());
@@ -134,6 +138,7 @@ public class UsersRolesController {
 			roleRepository.delete(role);
 			message = "Role Removed Successfully";
 			customBean.setMessage(message);
+			customBean.setStatusCode(200);
 		} catch (Exception e) {
 			log.info(e.getMessage());
 			customBean.setMessage(message);

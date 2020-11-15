@@ -51,6 +51,7 @@ public class UserServiceImpl implements UserService {
 	    user.setUserId(userDto.getUserId());
 	    user.setUsername(userDto.getUsername());
 	    user.setGender(userDto.getGender());
+	    user.setActive(userDto.getActive());
 		int k=userDetailsDao.saveUser(user);
 		return k;
 	}

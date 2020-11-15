@@ -39,6 +39,7 @@ public class JpaModalController {
 		return users;
 	}
 	
+	@GetMapping(path = "/user/roles" ,produces =  "application/json")
 	public List<Role> getAllRoles(){
 		List<Role> roles=null;
 		try {

@@ -80,7 +80,7 @@ public class UserDetailsController {
 			String password=encodeDecodeUtil.encodeText(userDTO.getPassword());
 			userDTO.setPassword(password);
 			int value=userService.insertUser(userDTO);
-			message = value>=1?"User Registration Successfully":"User Registration Fail";
+			message = value>0?"User Registration Successfully":"User Registration Fail";
 			if(value>=1) {
 				User user=userRepository.findByUsername(userDTO.getUsername()).get();
 				Role role=roleRepository.findByRoleName("USER").get();
@@ -91,6 +91,7 @@ public class UserDetailsController {
 				user_Role.setRoleId(role.getRoleId());
 				userRoleRepository.save(user_Role);
 			}
+			customBean.setStatusCode(200);
 			customBean.setMessage(message);
 			
 		} catch (Exception e) {
@@ -109,6 +110,7 @@ public class UserDetailsController {
 			int value=userService.updateUserDetailsById(userDTO);
 			message = value>=1?"User Updated Successfully":"User Updation Fail";
 			customBean.setMessage(message);
+			customBean.setStatusCode(200);
 			
 		} catch (Exception e) {
 			log.info(e.getMessage());
@@ -128,6 +130,7 @@ public class UserDetailsController {
 			int value=userService.deleteUserDetailsById(userId);
 			message = value>=1?"User Deleted Successfully":"User Deletion Fail";
 			customBean.setMessage(message);
+			customBean.setStatusCode(200);
 			
 		} catch (Exception e) {
 			log.info(e.getMessage());

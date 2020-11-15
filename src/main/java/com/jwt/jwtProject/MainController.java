@@ -47,7 +47,7 @@ public class MainController {
 	@Autowired
 	private JwtUtil jwtUtil;
 	
-	@RequestMapping({"/hello123"})
+	@RequestMapping({"/welcome"})
 	public String Hello() {
 		return "welcome";
 	}

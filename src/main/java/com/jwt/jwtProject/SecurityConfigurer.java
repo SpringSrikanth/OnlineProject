@@ -14,7 +14,7 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.jwt.jwtProject.filters.JwtFileter;
+import com.jwt.jwtProject.filters.JwtFilter;
 import com.jwt.jwtProject.service.MyUserDetailsService;
 
 @EnableWebSecurity
@@ -26,7 +26,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 	private MyUserDetailsService MyUserDetailsService;
 
 	@Autowired
-	private JwtFileter JwtFileter;
+	private JwtFilter JwtFileter;
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {

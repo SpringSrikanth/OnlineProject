@@ -8,25 +8,43 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.lang.NonNull;
+import org.springframework.lang.Nullable;
+
 @Entity
 @Table(name="users")
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int userid;
+	@NonNull
 	private String username;
-	private boolean active;
+	@Value("0")
+	private int active;
 	private String roles;
-	private String firstname;  
+	@NonNull
+	private String firstname;
+	@NonNull
 	private String lastname;
+	@NonNull
 	private String email;
+	@NonNull
 	private String password; 
 	private String gender; 
-	private String secondaryMail;                  
+	@Nullable
+	private String secondaryMail; 
+	
+	@Value("USER")
 	private String Default_Role;
+	
+	@Nullable
 	private String mobile;
+	@Nullable
 	private Date created_date=new Date();
+	@Nullable
 	private Date updated_date=new Date();
+	@Nullable
 	private Date dateofbirth;
 
 	public int getUserid() {
@@ -41,10 +59,10 @@ public class User {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public boolean isActive() {
+	public int isActive() {
 		return active;
 	}
-	public void setActive(boolean active) {
+	public void setActive(int active) {
 		this.active = active;
 	}
 	public String getRoles() {

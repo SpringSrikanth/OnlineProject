@@ -16,7 +16,14 @@ public class User {
 	private String Mobile;
 	private Date created_date;
 	private Date updated_date;
+	private int active;
 	
+	public int getActive() {
+		return active;
+	}
+	public void setActive(int active) {
+		this.active = active;
+	}
 	public int getUserId() {
 		return userId;
 	}
@@ -94,11 +101,9 @@ public class User {
 		return "User [userId=" + userId + ", username=" + username + ", firstname=" + firstname + ", lastname="
 				+ lastname + ", email=" + email + ", password=" + password + ", gender=" + gender + ", dateOfBirth="
 				+ dateOfBirth + ", secondaryMail=" + secondaryMail + ", Mobile=" + Mobile + ", created_date="
-				+ created_date + ", updated_date=" + updated_date + "]";
+				+ created_date + ", updated_date=" + updated_date + ", active=" + active + "]";
 	}
-	
-	
-	
 
+	
 
 }

@@ -21,9 +21,9 @@ import com.jwt.jwtProject.jwtUtil.JwtUtil;
 import com.jwt.jwtProject.service.MyUserDetailsService;
 
 @Service
-public class JwtFileter extends OncePerRequestFilter {
+public class JwtFilter extends OncePerRequestFilter {
 	
-	private static final Logger log = LoggerFactory.getLogger(JwtFileter.class);
+	private static final Logger log = LoggerFactory.getLogger(JwtFilter.class);
 
 	@Autowired
 	private MyUserDetailsService myUserDetailsService;
