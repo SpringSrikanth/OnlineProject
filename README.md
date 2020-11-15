@@ -53,9 +53,6 @@ The app defines following CRUD APIs.
 ## Used Dependencies
 
     mysql-connector-java(5.1.28)
-    ## updated to 8.0
-    to download pls follow https://dev.mysql.com/downloads/file/?id=499590
-    https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-8.0.22.0.msi
     
     h2database
     
@@ -72,3 +69,7 @@ The app defines following CRUD APIs.
     Spring Secutiry
     
     Log4j
+    
+## updated to 8.0
+*to download pls follow https://dev.mysql.com/downloads/file/?id=499590
+*https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-8.0.22.0.msi
