@@ -69,3 +69,9 @@ The app defines following CRUD APIs.
     Spring Secutiry
     
     Log4j
+    
+## updated to MySQL 8.0 
+
+    to download pls follow https://dev.mysql.com/downloads/file/?id=499590
+    https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-8.0.22.0.msi
+    
