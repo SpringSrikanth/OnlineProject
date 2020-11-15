@@ -70,7 +70,8 @@ The app defines following CRUD APIs.
     
     Log4j
     
-## updated to 8.0
+## updated to MySQL 8.0 
+
     to download pls follow https://dev.mysql.com/downloads/file/?id=499590
     https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-8.0.22.0.msi
     
