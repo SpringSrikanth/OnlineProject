@@ -45,7 +45,7 @@ The app will start running at <http://localhost:9090>.
 
 ## Explore Rest APIs
 
-## UserDetailsController
+## UserDetails Controller <a href="https://github.com/SpringSrikanth/OnlineProject/blob/master/src/main/java/com/koseksi/pachipulusula/controller/UserDetailsController.java">view</a>
 
 ## Root path "users"
  eg:"users/create/user"
@@ -61,13 +61,14 @@ The app will start running at <http://localhost:9090>.
    GET User Details By Id="/user/{id}"
 
 
-## MainController (Auth Controller)
+## MainController (Auth Controller) <a href="https://github.com/SpringSrikanth/OnlineProject/blob/master/src/main/java/com/jwt/jwtProject/MainController.java">view</a>
+
 ## Root path ""
 + POST "/authenticate"
 + GET "/welcome"
 
 
-## UsersRoles Controller
+## UsersRoles Controller <a href="https://github.com/SpringSrikanth/OnlineProject/blob/master/src/main/java/com/koseksi/pachipulusula/controller/UsersRolesController.java">view</a>
 ## Root path ""
 + POST "/role/create"
 + POST "/addRole/ToUsers/{roleId}"
@@ -76,13 +77,15 @@ The app will start running at <http://localhost:9090>.
 + POST "/deleteRole"
 
 
-## JpaModalController.java
+## JpaModal Controller <a href="https://github.com/SpringSrikanth/OnlineProject/blob/master/src/main/java/com/koseksi/pachipulusula/controller/JpaModalController.java">view</a>
+
 ## Root path ""
 + GET "/user/users"
 + GET "/user/roles
 
 
-## CommonController
+## Common Controller <a href="https://github.com/SpringSrikanth/OnlineProject/blob/master/src/main/java/com/koseksi/pachipulusula/controller/CommonController.java">view</a>
+
 ## Root path ""
 + POST "/encode/encodeString/{text}"
 + POST "/decode/decodeString/{text}"
