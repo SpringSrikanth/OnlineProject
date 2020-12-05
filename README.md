@@ -66,35 +66,42 @@ The app will start running at <http://localhost:9090>.
 
 ### Root path ""
  ```bash
-+ POST "/authenticate"
-+ GET "/welcome"
+ POST "/authenticate"
+ 
+ GET "/welcome"
 ```
 
 ### UsersRoles Controller <a href="https://github.com/SpringSrikanth/OnlineProject/blob/master/src/main/java/com/koseksi/pachipulusula/controller/UsersRolesController.java">view</a>
 
 ### Root path ""
 ```bash
-+ POST "/role/create"
-+ POST "/addRole/ToUsers/{roleId}"
-+ POST "/userRole/removeUser" 
-+ POST "/addRole/removeAllUsers" 
-+ POST "/deleteRole"
+ POST "/role/create"
+ 
+ POST "/addRole/ToUsers/{roleId}"
+ 
+ POST "/userRole/removeUser" 
+ 
+ POST "/addRole/removeAllUsers" 
+ 
+ POST "/deleteRole"
 ```
 
 ### JpaModal Controller <a href="https://github.com/SpringSrikanth/OnlineProject/blob/master/src/main/java/com/koseksi/pachipulusula/controller/JpaModalController.java">view</a>
 
 ### Root path ""
 ```bash
-+ GET "/user/users"
-+ GET "/user/roles
+ GET "/user/users"
+ 
+ GET "/user/roles
 ```
 
 ### Common Controller <a href="https://github.com/SpringSrikanth/OnlineProject/blob/master/src/main/java/com/koseksi/pachipulusula/controller/CommonController.java">view</a>
 
 ### Root path ""
 ```bash
-+ POST "/encode/encodeString/{text}"
-+ POST "/decode/decodeString/{text}"
+ POST "/encode/encodeString/{text}"
+ 
+ POST "/decode/decodeString/{text}"
 ```
 
 ## Used Dependencies
