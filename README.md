@@ -45,9 +45,9 @@ The app will start running at <http://localhost:9090>.
 
 ## Explore Rest APIs
 
-## UserDetails Controller <a href="https://github.com/SpringSrikanth/OnlineProject/blob/master/src/main/java/com/koseksi/pachipulusula/controller/UserDetailsController.java">view</a>
+** UserDetails Controller <a href="https://github.com/SpringSrikanth/OnlineProject/blob/master/src/main/java/com/koseksi/pachipulusula/controller/UserDetailsController.java">view</a>
 
-## Root path "users"
+** Root path "users"
  eg:"users/create/user"
 
    POST Create User= "/create/user"
@@ -61,15 +61,15 @@ The app will start running at <http://localhost:9090>.
    GET User Details By Id="/user/{id}"
 
 
-## MainController (Auth Controller) <a href="https://github.com/SpringSrikanth/OnlineProject/blob/master/src/main/java/com/jwt/jwtProject/MainController.java">view</a>
+** MainController (Auth Controller) <a href="https://github.com/SpringSrikanth/OnlineProject/blob/master/src/main/java/com/jwt/jwtProject/MainController.java">view</a>
 
-## Root path ""
+** Root path ""
 + POST "/authenticate"
 + GET "/welcome"
 
 
-## UsersRoles Controller <a href="https://github.com/SpringSrikanth/OnlineProject/blob/master/src/main/java/com/koseksi/pachipulusula/controller/UsersRolesController.java">view</a>
-## Root path ""
+** UsersRoles Controller <a href="https://github.com/SpringSrikanth/OnlineProject/blob/master/src/main/java/com/koseksi/pachipulusula/controller/UsersRolesController.java">view</a>
+** Root path ""
 + POST "/role/create"
 + POST "/addRole/ToUsers/{roleId}"
 + POST "/userRole/removeUser" 
@@ -77,16 +77,16 @@ The app will start running at <http://localhost:9090>.
 + POST "/deleteRole"
 
 
-## JpaModal Controller <a href="https://github.com/SpringSrikanth/OnlineProject/blob/master/src/main/java/com/koseksi/pachipulusula/controller/JpaModalController.java">view</a>
+** JpaModal Controller <a href="https://github.com/SpringSrikanth/OnlineProject/blob/master/src/main/java/com/koseksi/pachipulusula/controller/JpaModalController.java">view</a>
 
-## Root path ""
+** Root path ""
 + GET "/user/users"
 + GET "/user/roles
 
 
-## Common Controller <a href="https://github.com/SpringSrikanth/OnlineProject/blob/master/src/main/java/com/koseksi/pachipulusula/controller/CommonController.java">view</a>
+** Common Controller <a href="https://github.com/SpringSrikanth/OnlineProject/blob/master/src/main/java/com/koseksi/pachipulusula/controller/CommonController.java">view</a>
 
-## Root path ""
+** Root path ""
 + POST "/encode/encodeString/{text}"
 + POST "/decode/decodeString/{text}"
 
