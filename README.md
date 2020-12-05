@@ -49,16 +49,17 @@ The app will start running at <http://localhost:9090>.
 
 ### Root path "users"
  eg:"users/create/user"
+ ```bash
+  POST Create User= "/create/user"
 
-   POST Create User= "/create/user"
-  
-   POST Update User="/user/update"
-  
-   GET Users Working or not = "/health"
-  
-   POST Delete User="/user/delete/{id}" eg: "users/user/delete/1"
-  
-   GET User Details By Id="/user/{id}"
+  POST Update User="/user/update"
+
+  GET Users Working or not = "/health"
+
+  POST Delete User="/user/delete/{id}" eg: "users/user/delete/1"
+
+  GET User Details By Id="/user/{id}"
+ ```
 
 
 ### MainController (Auth Controller) <a href="https://github.com/SpringSrikanth/OnlineProject/blob/master/src/main/java/com/jwt/jwtProject/MainController.java">view</a>
