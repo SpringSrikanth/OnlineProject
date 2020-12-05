@@ -22,15 +22,20 @@ create database mydb
 **4. Build and run the app using maven**
 
 ```bash
-mvn package
-java -jar target/spring-boot-rest-api-tutorial-0.0.1-SNAPSHOT.jar
+To build and download dependencies--> mvn clean install -DskipTests
+
+To build .jar file --> mvn clean package -DskipTests
+
+To run application --> java -jar target/spring-boot-rest-api-tutorial-0.0.1-SNAPSHOT.jar -DskipTests
+
+Another method to run application --> mvn spring-boot:run -DskipTests
 
 ```
 
 Alternatively, you can run the app without packaging it using -
 
 ```bash
-mvn spring-boot:run
+mvn spring-boot:run -DskipTests
 ```
 
 The app will start running at <http://localhost:9090>.
