@@ -44,17 +44,47 @@ The app will start running at <http://localhost:9090>.
 
 ## Explore Rest APIs
 
-The app defines following CRUD APIs.
+## UserDetailsController
 
-    GET /api/v1/users
-    
-    POST /api/v1/users
-    
-    GET /api/v1/users/{userId}
-    
-    PUT /api/v1/users/{userId}
-    
-    DELETE /api/v1/users/{userId}
+## Root path "users":
+ eg:"users/create/user"
+
+   POST Create User= "/create/user"
+  
+   POST Update User="/user/update"
+  
+   GET Users Working or not = "/health"
+  
+   POST Delete User="/user/delete/{id}" eg: "users/user/delete/1"
+  
+   GET User Details By Id="/user/{id}"
+
+
+## MainController (Auth Controller)
+## Root path ""
++ POST "/authenticate"
++ GET "/welcome"
+
+
+## UsersRoles Controller
+## Root path ""
+    + POST "/role/create"
+    + POST "/addRole/ToUsers/{roleId}"
+    + POST "/userRole/removeUser" 
+    + POST "/addRole/removeAllUsers" 
+    + POST "/deleteRole"
+
+
+## JpaModalController.java
+## Root path ""
++ GET "/user/users"
++ GET "/user/roles
+
+
+## CommonController
+## Root path ""
++ POST "/encode/encodeString/{text}"
++ POST "/decode/decodeString/{text}"
 
 
 ## Used Dependencies
