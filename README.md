@@ -19,6 +19,8 @@ create database mydb
 
 + change `spring.datasource.username` and `spring.datasource.password` as per your mysql installation
 
+to see <a href="https://github.com/SpringSrikanth/OnlineProject/blob/master/pom.xml">pom.xml</a>
+
 **4. Build and run the app using maven**
 
 ```bash
