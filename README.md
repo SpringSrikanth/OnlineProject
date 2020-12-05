@@ -6,6 +6,7 @@
 
 ```bash
 https://github.com/SpringSrikanth/OnlineProject.git
+branch master
 ```
 
 **2. Create Mysql database**
@@ -46,7 +47,7 @@ The app will start running at <http://localhost:9090>.
 
 ## UserDetailsController
 
-## Root path "users":
+## Root path "users"
  eg:"users/create/user"
 
    POST Create User= "/create/user"
@@ -68,11 +69,11 @@ The app will start running at <http://localhost:9090>.
 
 ## UsersRoles Controller
 ## Root path ""
-    + POST "/role/create"
-    + POST "/addRole/ToUsers/{roleId}"
-    + POST "/userRole/removeUser" 
-    + POST "/addRole/removeAllUsers" 
-    + POST "/deleteRole"
++ POST "/role/create"
++ POST "/addRole/ToUsers/{roleId}"
++ POST "/userRole/removeUser" 
++ POST "/addRole/removeAllUsers" 
++ POST "/deleteRole"
 
 
 ## JpaModalController.java
