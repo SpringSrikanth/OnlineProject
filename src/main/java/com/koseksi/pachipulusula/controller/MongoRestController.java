@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.koseksi.app.modals.Blog;
 import com.koseksi.app.repository.BlogsMongoRepository;
-import com.koseksi.pachipulusula.constants.CommonConstants;
+import com.koseksi.app.service.SequenceGeneratorService;
 import com.koseksi.pachipulusula.util.UtilService;
 
 @RestController
@@ -28,11 +28,14 @@ public class MongoRestController {
 
 	@Autowired
 	private UtilService utilService;
+	
+	@Autowired
+	private SequenceGeneratorService sequenceGeneratorService;
 
 	@PostMapping(path = "/blogs/save")
 	public ResponseEntity<Blog> saveBlogDetails(@RequestBody Blog bDetails) {
 		try {
-			bDetails.setBlogId(Integer.parseInt(utilService.getNextSequenceId(CommonConstants.BLOG_SEQUENCE_NAME)));
+			bDetails.setBlogId(sequenceGeneratorService.generateSequence(Blog.SEQUENCE_NAME));
 			bDetails.setCreatedDate(new Date());
 			bDetails.setUpdatedDate(new Date());
 			Blog blogDetails=blogsMongoRepository.save(bDetails);   

@@ -2,9 +2,6 @@ package com.koseksi.app.modals;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
-
-import org.hibernate.id.SequenceGenerator;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -13,8 +10,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Blog implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+
+	public static final String SEQUENCE_NAME = "blogs_Sequence";
+	
 	@Id
-	private int blogId;
+	private long blogId;
+	
 	private String blogTitle;
 	private String blogDescription;
 	private String blogCreatedBy;
@@ -27,10 +28,10 @@ public class Blog implements Serializable {
 	private Date updatedDate;
 	private boolean isPublished=false; 
 	private boolean emailNotified=false;
-	public int getBlogId() {
+	public long getBlogId() {
 		return blogId;
 	}
-	public void setBlogId(int blogId) {
+	public void setBlogId(long blogId) {
 		this.blogId = blogId;
 	}
 	public String getBlogTitle() {
