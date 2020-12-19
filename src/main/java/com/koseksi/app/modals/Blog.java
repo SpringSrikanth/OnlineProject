@@ -20,8 +20,8 @@ public class Blog implements Serializable {
 	private String blogCreatedBy;
 	private String userId;
 	private String blogContent;
-	private List<String> blogImageUrls;
-	private List<String> blogImportantLinks;
+	private String blogImageUrls;
+	private String blogImportantLinks;
 	private String mainImage;
 	private Date createdDate;
 	private Date updatedDate;
@@ -63,16 +63,16 @@ public class Blog implements Serializable {
 	public void setBlogContent(String blogContent) {
 		this.blogContent = blogContent;
 	}
-	public List<String> getBlogImageUrls() {
+	public String getBlogImageUrls() {
 		return blogImageUrls;
 	}
-	public void setBlogImageUrls(List<String> blogImageUrls) {
+	public void setBlogImageUrls(String blogImageUrls) {
 		this.blogImageUrls = blogImageUrls;
 	}
-	public List<String> getBlogImportantLinks() {
+	public String getBlogImportantLinks() {
 		return blogImportantLinks;
 	}
-	public void setBlogImportantLinks(List<String> blogImportantLinks) {
+	public void setBlogImportantLinks(String blogImportantLinks) {
 		this.blogImportantLinks = blogImportantLinks;
 	}
 	public String getMainImage() {

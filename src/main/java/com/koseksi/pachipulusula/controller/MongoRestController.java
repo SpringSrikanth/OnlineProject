@@ -32,7 +32,6 @@ public class MongoRestController {
 	@PostMapping(path = "/blogs/save")
 	public ResponseEntity<Blog> saveBlogDetails(@RequestBody Blog bDetails) {
 		try {
-			System.out.println(utilService.getNextSequenceId(CommonConstants.BLOG_SEQUENCE_NAME));
 			bDetails.setBlogId(Integer.parseInt(utilService.getNextSequenceId(CommonConstants.BLOG_SEQUENCE_NAME)));
 			bDetails.setCreatedDate(new Date());
 			bDetails.setUpdatedDate(new Date());
