@@ -8,15 +8,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
-public class ShowHomeController {
+public class ViewController {
+	private static final Logger log = LoggerFactory.getLogger(ViewController.class);
 	
-	private static final Logger log = LoggerFactory.getLogger(ShowHomeController.class);
-
 	@RequestMapping("/home")
-	@ResponseBody
 	public  String showHome() {
-	
 		return "welcome";
 	}
-
 }

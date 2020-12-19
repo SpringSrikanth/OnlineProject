@@ -17,12 +17,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jwt.jwtProject.modals.Role;
-import com.jwt.jwtProject.modals.RoleRepository;
-import com.jwt.jwtProject.modals.User;
-import com.jwt.jwtProject.modals.UserRepository;
-import com.jwt.jwtProject.modals.UserRoleRepository;
-import com.jwt.jwtProject.modals.User_Role;
+import com.koseksi.app.modals.Role;
+import com.koseksi.app.modals.User;
+import com.koseksi.app.modals.User_Role;
+import com.koseksi.app.repository.RoleRepository;
+import com.koseksi.app.repository.UserRepository;
+import com.koseksi.app.repository.UserRoleRepository;
 import com.koseksi.pachipulusula.customjavabean.CustomBean;
 import com.koseksi.pachipulusula.dto.UserDTO;
 import com.koseksi.pachipulusula.service.UserService;

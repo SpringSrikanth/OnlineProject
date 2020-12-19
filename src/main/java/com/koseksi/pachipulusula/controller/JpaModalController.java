@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jwt.jwtProject.modals.Role;
-import com.jwt.jwtProject.modals.RoleRepository;
-import com.jwt.jwtProject.modals.User;
-import com.jwt.jwtProject.modals.UserRepository;
-import com.jwt.models.CommonResponceObject;
+import com.koseksi.app.modals.Role;
+import com.koseksi.app.modals.User;
+import com.koseksi.app.models.CommonResponceObject;
+import com.koseksi.app.repository.RoleRepository;
+import com.koseksi.app.repository.UserRepository;
 import com.koseksi.pachipulusula.util.EncodeDecodeUtil;
 
 @RestController

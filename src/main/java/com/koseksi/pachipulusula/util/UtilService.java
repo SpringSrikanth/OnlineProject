@@ -14,7 +14,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
-import com.jwt.models.MongoSequence;
+import com.koseksi.app.models.MongoSequence;
 
 @Service
 public class UtilService {

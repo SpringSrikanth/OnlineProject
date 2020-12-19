@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jwt.jwtProject.modals.BlogDetails;
-import com.jwt.jwtProject.modals.BlogsMongoRepository;
+import com.koseksi.app.modals.Blog;
+import com.koseksi.app.repository.BlogsMongoRepository;
 import com.koseksi.pachipulusula.constants.CommonConstants;
 import com.koseksi.pachipulusula.util.UtilService;
 
@@ -30,28 +30,28 @@ public class MongoRestController {
 	private UtilService utilService;
 
 	@PostMapping(path = "/blogs/save")
-	public ResponseEntity<BlogDetails> saveBlogDetails(@RequestBody BlogDetails bDetails) {
+	public ResponseEntity<Blog> saveBlogDetails(@RequestBody Blog bDetails) {
 		try {
 			System.out.println(utilService.getNextSequenceId(CommonConstants.BLOG_SEQUENCE_NAME));
 			bDetails.setBlogId(Integer.parseInt(utilService.getNextSequenceId(CommonConstants.BLOG_SEQUENCE_NAME)));
 			bDetails.setCreatedDate(new Date());
 			bDetails.setUpdatedDate(new Date());
-			BlogDetails blogDetails=blogsMongoRepository.save(bDetails);   
+			Blog blogDetails=blogsMongoRepository.save(bDetails);   
 			return new ResponseEntity<>(blogDetails, HttpStatus.CREATED);
 		} catch (Exception e) {
 			System.out.println(e);
-			return new ResponseEntity<>(null, HttpStatus.EXPECTATION_FAILED);
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}	
 	}
 
 	@PostMapping(path = "/blogs/update/{id}")
-	public ResponseEntity<BlogDetails> updateBlogDetails(@PathVariable(name = "id") int blogId,@RequestBody BlogDetails bDetails) {
+	public ResponseEntity<Blog> updateBlogDetails(@PathVariable(name = "id") int blogId,@RequestBody Blog bDetails) {
 		try {
 
 			bDetails.setUpdatedDate(new Date());
-			Optional<BlogDetails> blogDetailsData = blogsMongoRepository.findById(blogId);
+			Optional<Blog> blogDetailsData = blogsMongoRepository.findById(blogId);
 			if (blogDetailsData.isPresent()) {
-				BlogDetails blogDetails = blogDetailsData.get();
+				Blog blogDetails = blogDetailsData.get();
 				blogDetails.setBlogTitle(bDetails.getBlogTitle());
 				blogDetails.setBlogDescription(bDetails.getBlogDescription());
 				blogDetails.setBlogContent(bDetails.getBlogContent());
@@ -72,9 +72,9 @@ public class MongoRestController {
 	
 	
 	@GetMapping(path = "/blogs/blog/{id}")
-	public ResponseEntity<BlogDetails> getBlogDetails(@PathVariable(name = "id") int blogid){
+	public ResponseEntity<Blog> getBlogDetails(@PathVariable(name = "id") int blogid){
 		try {
-			Optional<BlogDetails> blogDetailsData=blogsMongoRepository.findById(blogid);
+			Optional<Blog> blogDetailsData=blogsMongoRepository.findById(blogid);
 			if(blogDetailsData.isPresent())
 				return new ResponseEntity<>(blogDetailsData.get(),HttpStatus.OK);
 			else
@@ -87,25 +87,25 @@ public class MongoRestController {
 	
 	
 	@GetMapping(path ="blogs/all")
-	public ResponseEntity<List<BlogDetails>> getAllBlogs(){
+	public ResponseEntity<List<Blog>> getAllBlogs(){
 		try {
-			List<BlogDetails> allBlogDetails=blogsMongoRepository.findAll();
+			List<Blog> allBlogDetails=blogsMongoRepository.findAll();
 			return new ResponseEntity<>(allBlogDetails,HttpStatus.FOUND); 
 		} catch (Exception e) {
 			System.out.println(e);
-			return new ResponseEntity<>(new ArrayList<>(),HttpStatus.NOT_FOUND); 
+			return new ResponseEntity<>(new ArrayList<>(),HttpStatus.INTERNAL_SERVER_ERROR); 
 		}
 	}
 	
 	
 	@DeleteMapping(path = "/blogs/delete/{id}")
-	public ResponseEntity<HttpStatus> deleteBlogById(@PathVariable(name = "id") int blogId){
+	public ResponseEntity<?> deleteBlogById(@PathVariable(name = "id") int blogId){
 		try {
 			blogsMongoRepository.deleteById(blogId);
-			return new ResponseEntity<>(HttpStatus.FOUND);
+			return new ResponseEntity<>("Deleted Successfully",HttpStatus.FOUND);
 		} catch (Exception e) {
 			System.out.println(e);
-			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>(e.getLocalizedMessage().toString(),HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 	

@@ -1,9 +1,9 @@
-package com.jwt.models;
+package com.koseksi.app.models;
 
 import java.util.List;
 
-import com.jwt.jwtProject.modals.Role;
-import com.jwt.jwtProject.modals.User;
+import com.koseksi.app.modals.Role;
+import com.koseksi.app.modals.User;
 
 public class AuthenticationResponce {
 	private String token;

@@ -1,4 +1,4 @@
-package com.jwt.jwtProject.modals;
+package com.koseksi.app.modals;
 
 import java.util.Date;
 
@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.lang.NonNull;
@@ -18,15 +19,17 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int userid;
+	
 	@NonNull
 	private String username;
 	@Value("0")
 	private int active;
-	private String roles;
+	
 	@NonNull
 	private String firstname;
 	@NonNull
 	private String lastname;
+	
 	@NonNull
 	private String email;
 	@NonNull
@@ -35,17 +38,19 @@ public class User {
 	@Nullable
 	private String secondaryMail; 
 	
-	@Value("USER")
-	private String Default_Role;
+	private String Default_Role="USER";
 	
 	@Nullable
 	private String mobile;
+	
 	@Nullable
 	private Date created_date=new Date();
+	
 	@Nullable
 	private Date updated_date=new Date();
-	@Nullable
-	private Date dateofbirth;
+	
+	
+	private String dateofbirth;
 
 	public int getUserid() {
 		return userid;
@@ -64,12 +69,6 @@ public class User {
 	}
 	public void setActive(int active) {
 		this.active = active;
-	}
-	public String getRoles() {
-		return roles;
-	}
-	public void setRoles(String roles) {
-		this.roles = roles;
 	}
 	public String getFirstname() {
 		return firstname;
@@ -131,10 +130,10 @@ public class User {
 	public void setUpdated_date(Date updated_date) {
 		this.updated_date = updated_date;
 	}
-	public Date getDateofbirth() {
+	public String getDateofbirth() {
 		return dateofbirth;
 	}
-	public void setDateofbirth(Date dateofbirth) {
+	public void setDateofbirth(String dateofbirth) {
 		this.dateofbirth = dateofbirth;
 	}
 	

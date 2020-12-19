@@ -1,4 +1,4 @@
-package com.jwt.jwtProject;
+package com.koseksi.app;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,17 +9,17 @@ import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-import com.jwt.jwtProject.modals.RoleRepository;
-import com.jwt.jwtProject.modals.UserRepository;
-import com.jwt.jwtProject.modals.UserRoleRepository;
+import com.koseksi.app.repository.BlogsMongoRepository;
+import com.koseksi.app.repository.RoleRepository;
+import com.koseksi.app.repository.UserRepository;
+import com.koseksi.app.repository.UserRoleRepository;
 import com.koseksi.pachipulusula.config.RootAppConfig;
 import com.koseksi.pachipulusula.config.WebMVCConfig;
 
 @SpringBootApplication
 @Import({WebMVCConfig.class,RootAppConfig.class})
-@EnableJpaRepositories(basePackageClasses = {UserRepository.class,RoleRepository.class,UserRoleRepository.class})
+@EnableJpaRepositories(basePackageClasses = {UserRepository.class,BlogsMongoRepository.class,RoleRepository.class,UserRoleRepository.class})
 public class JwtProjectApplication {
 	private static final Logger logger = LoggerFactory.getLogger(JwtProjectApplication.class);
     
@@ -34,8 +34,7 @@ public class JwtProjectApplication {
 		return  new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedHeaders("*").allowedOrigins("*");
-				
+				registry.addMapping("/**").allowedHeaders("*").allowedOrigins("*");	
 			}
 		};
 		

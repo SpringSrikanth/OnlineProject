@@ -1,4 +1,4 @@
-package com.jwt.jwtProject.modals;
+package com.koseksi.app.modals;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 
 @Document(collection = "Blogs")
-public class BlogDetails implements Serializable {
+public class Blog implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id

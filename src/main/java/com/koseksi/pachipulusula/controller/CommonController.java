@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jwt.models.CommonResponceObject;
+import com.koseksi.app.models.CommonResponceObject;
 import com.koseksi.pachipulusula.util.EncodeDecodeUtil;
 
 @RestController
@@ -22,7 +22,6 @@ public class CommonController {
 		return commonResponceObject;
 		
 	}
-	
 	
 	@GetMapping(path = "/decode/decodeString/{text}", produces = "application/json")
 	public CommonResponceObject getDecriptedString(@PathVariable(name = "text")String encodeText) {

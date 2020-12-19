@@ -1,4 +1,4 @@
-package com.jwt.models;
+package com.koseksi.app.models;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -6,10 +6,6 @@ import java.util.Date;
 import java.util.List;
 
 public class CommonResponceObject implements Serializable{
-	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private Date createdDate=new Date();
 	private String messageType;

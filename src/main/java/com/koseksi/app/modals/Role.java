@@ -1,4 +1,4 @@
-package com.jwt.jwtProject.modals;
+package com.koseksi.app.modals;
 
 import java.util.Date;
 

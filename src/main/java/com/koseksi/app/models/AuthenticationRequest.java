@@ -1,6 +1,6 @@
-package com.jwt.models;
+package com.koseksi.app.models;
 
-import com.jwt.jwtProject.modals.User;
+import com.koseksi.app.modals.User;
 
 public class AuthenticationRequest {
 

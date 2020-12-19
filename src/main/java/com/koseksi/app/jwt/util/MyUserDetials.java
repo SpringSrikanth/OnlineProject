@@ -1,4 +1,4 @@
-package com.jwt.jwtProject.jwtUtil;
+package com.koseksi.app.jwt.util;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -8,16 +8,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.jwt.jwtProject.modals.User;
+import com.koseksi.app.modals.User;
 
-public class myUserDetials implements UserDetails{
+public class MyUserDetials implements UserDetails{
 	
-	private static final Logger log = LoggerFactory.getLogger(myUserDetials.class);
+	private static final Logger log = LoggerFactory.getLogger(MyUserDetials.class);
 
 	private static final long serialVersionUID = 1L;
 	private String username;
 	private String password;
-	public myUserDetials(User user) {
+	public MyUserDetials(User user) {
 		this.username=user.getUsername();
 		this.password=user.getPassword();
 	}

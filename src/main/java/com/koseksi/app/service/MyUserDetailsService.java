@@ -1,4 +1,4 @@
-package com.jwt.jwtProject.service;
+package com.koseksi.app.service;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.jwt.jwtProject.jwtUtil;
+package com.koseksi.app.jwt.util;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package com.jwt.jwtProject;
+package com.koseksi.app;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,8 +14,8 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.jwt.jwtProject.filters.JwtFilter;
-import com.jwt.jwtProject.service.MyUserDetailsService;
+import com.koseksi.app.filters.JwtFilter;
+import com.koseksi.app.service.MyUserDetailsService;
 
 @EnableWebSecurity
 public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
@@ -32,6 +32,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(MyUserDetailsService);
 	}
+	
 	@SuppressWarnings("deprecation")
 	@Bean
 	public PasswordEncoder passwordEncoder() {
@@ -47,14 +48,12 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		//for giving permission to one url to authenticate
 		/*
 		  http.csrf().disable().authorizeRequests() .antMatchers("/authenticate")
 		  .permitAll().anyRequest().authenticated()
 		  .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.
 		  STATELESS);
 		 */
-
 		http.cors()
 		.and()
 		.csrf()
@@ -77,9 +76,9 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 				"/api/user/checkUsernameAvailability",
 				"/api/user/checkEmailAvailability",
 				"/users/create/user",
-				"/hello123",
 				"/home",
-				"/health"
+				"/users/health",
+				"/api/users/create"
 				)
 		.permitAll()
 		.antMatchers("/authenticate")

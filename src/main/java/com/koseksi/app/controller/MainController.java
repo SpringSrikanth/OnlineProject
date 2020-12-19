@@ -1,4 +1,4 @@
-package com.jwt.jwtProject;
+package com.koseksi.app.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -15,16 +15,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jwt.jwtProject.jwtUtil.JwtUtil;
-import com.jwt.jwtProject.modals.Role;
-import com.jwt.jwtProject.modals.RoleRepository;
-import com.jwt.jwtProject.modals.User;
-import com.jwt.jwtProject.modals.UserRepository;
-import com.jwt.jwtProject.modals.UserRoleRepository;
-import com.jwt.jwtProject.modals.User_Role;
-import com.jwt.jwtProject.service.MyUserDetailsService;
-import com.jwt.models.AuthenticationRequest;
-import com.jwt.models.AuthenticationResponce;
+import com.koseksi.app.jwt.util.JwtUtil;
+import com.koseksi.app.modals.Role;
+import com.koseksi.app.modals.User;
+import com.koseksi.app.modals.User_Role;
+import com.koseksi.app.models.AuthenticationRequest;
+import com.koseksi.app.models.AuthenticationResponce;
+import com.koseksi.app.repository.RoleRepository;
+import com.koseksi.app.repository.UserRepository;
+import com.koseksi.app.repository.UserRoleRepository;
+import com.koseksi.app.service.MyUserDetailsService;
 
 @RestController
 public class MainController {
@@ -46,11 +46,7 @@ public class MainController {
 	
 	@Autowired
 	private JwtUtil jwtUtil;
-	
-	@RequestMapping({"/welcome"})
-	public String Hello() {
-		return "welcome";
-	}
+
 	
 	@RequestMapping(value="/authenticate",method = RequestMethod.POST)
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception{
