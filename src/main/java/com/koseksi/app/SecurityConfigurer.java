@@ -78,7 +78,8 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 				"/users/create/user",
 				"/home",
 				"/users/health",
-				"/api/users/create"
+				"/api/users/create",
+				"/files/db/downloadFile/**"
 				)
 		.permitAll()
 		.antMatchers("/authenticate")
