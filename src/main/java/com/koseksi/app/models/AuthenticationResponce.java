@@ -6,17 +6,20 @@ import com.koseksi.app.modals.Role;
 import com.koseksi.app.modals.User;
 
 public class AuthenticationResponce {
-	private String token;
+	private String accessToken;
+	private String refreshToken;
 	private User userdetails;
 	private List<Role> roles;
 	public AuthenticationResponce() {}
 	
-	public AuthenticationResponce(String token) {
-		this.token = token;
+	public AuthenticationResponce(String accessToken,String refreshToken) {
+		this.accessToken = accessToken;
+		this.refreshToken = refreshToken;
 	}
 	
-	public AuthenticationResponce(String token,User userdetails, List<Role> roles) {
-		this.token = token;
+	public AuthenticationResponce(String accessToken,String refreshToken,User userdetails, List<Role> roles) {
+		this.accessToken = accessToken;
+		this.refreshToken = refreshToken;
 		this.userdetails=userdetails;
 		this.roles=roles;
 	}
@@ -37,12 +40,20 @@ public class AuthenticationResponce {
 		this.roles = roles;
 	}
 
-	public String getToken() {
-		return token;
+	public String getAccessToken() {
+		return accessToken;
 	}
 
-	public void setToken(String token) {
-		this.token = token;
+	public void setAccessToken(String accessToken) {
+		this.accessToken = accessToken;
+	}
+
+	public String getRefreshToken() {
+		return refreshToken;
+	}
+
+	public void setRefreshToken(String refreshToken) {
+		this.refreshToken = refreshToken;
 	}
 	
 	

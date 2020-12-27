@@ -83,7 +83,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 				"/files/local/downloadFile/**"
 				)
 		.permitAll()
-		.antMatchers("/authenticate")
+		.antMatchers("/authenticate","/validate/refreshToken")
 		.permitAll()
 		.anyRequest().authenticated();
 

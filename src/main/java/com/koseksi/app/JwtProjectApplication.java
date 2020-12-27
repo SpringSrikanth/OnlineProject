@@ -14,6 +14,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -42,6 +43,7 @@ import com.koseksi.pachipulusula.config.WebMVCConfig;
 		FileRepository.class,
 		MessagesRepository.class
 })
+@EnableScheduling
 public class JwtProjectApplication {
 	private static final Logger logger = LoggerFactory.getLogger(JwtProjectApplication.class);
 	
