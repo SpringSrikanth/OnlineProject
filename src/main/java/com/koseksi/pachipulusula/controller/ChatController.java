@@ -16,12 +16,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.koseksi.app.modals.Messages;
 import com.koseksi.app.models.ChatSevice;
+import com.koseksi.pachipulusula.util.UtilService;
 
 @RestController
 @RequestMapping("/chats")
 public class ChatController {
 	@Autowired
 	private  ChatSevice chatSevice;
+	
+	@Autowired
+	private UtilService utilService;
 	
 	@PostMapping(path="/create/message", consumes =  "application/json",produces =  "application/json")
 	public ResponseEntity<?> createMessage(@RequestBody Messages messagesDto) {
@@ -54,6 +58,17 @@ public class ChatController {
 	public ResponseEntity<?> getAllMessagesByFromUserIdToUserId(@PathVariable("fromUserId") int fromUserId,@PathVariable("toUserId") int toUserId){
 		try {
 			return new ResponseEntity<>(chatSevice.fetchAllMessagesByFromUserIdToUserId(fromUserId,toUserId),HttpStatus.OK);
+			
+		} catch (Exception e) {
+			return new ResponseEntity<>(e.getLocalizedMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	
+	@GetMapping(path = "/messages/all/{fromUserId}/{toUserId}",produces =  "application/json")
+	public ResponseEntity<?> getAllMessagesByFromAndToUserId(@PathVariable("fromUserId") String fromUserId,@PathVariable("toUserId") String toUserId){
+		try {
+			return new ResponseEntity<>(utilService.findMessagesByFromAndToUserId(fromUserId,toUserId),HttpStatus.OK);
 			
 		} catch (Exception e) {
 			return new ResponseEntity<>(e.getLocalizedMessage(), HttpStatus.INTERNAL_SERVER_ERROR);

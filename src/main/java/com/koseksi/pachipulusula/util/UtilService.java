@@ -2,6 +2,7 @@ package com.koseksi.pachipulusula.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 import org.slf4j.Logger;
@@ -15,6 +16,8 @@ import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
 import com.koseksi.app.models.MongoSequence;
+import com.koseksi.pachipulusula.dao.MessagesDao;
+import com.koseksi.pachipulusula.dto.MessagesDTO;
 
 @Service
 public class UtilService {
@@ -22,6 +25,9 @@ public class UtilService {
 	
 	@Autowired
 	private MongoOperations mongoOperations;
+	
+	@Autowired
+	private MessagesDao messagesDao;
 	
 	@SuppressWarnings("deprecation")
 	public Date convertedToDateFromString(String Date){
@@ -76,5 +82,10 @@ public class UtilService {
 		}
 		
 		return String.valueOf(mongoSequence.getSeq());
+	}
+	
+	public List<MessagesDTO> findMessagesByFromAndToUserId(String fromUserId,String toUserId) throws Exception{
+		return messagesDao.findAllMessagesByFromAndToUserID(fromUserId, toUserId);
+		
 	}
 }
