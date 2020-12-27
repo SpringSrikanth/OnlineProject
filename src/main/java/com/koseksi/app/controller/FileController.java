@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -46,6 +47,9 @@ public class FileController {
     @Autowired
     private LocalFileRepository localFileRepository;
     
+    @Autowired
+    private Environment environment;
+    
     @PostMapping("/uploadFile")
     public UploadFileResponce uploadFile(@RequestParam("file") MultipartFile file,@RequestParam("userId") int userId) {
     	LocalFileDetails localFileDetails = new LocalFileDetails();
@@ -71,7 +75,7 @@ public class FileController {
 			LocalFileDetails localFileDetails=null;
 			if (fileData.isPresent()) {
 				localFileDetails=fileData.get();
-				Files.deleteIfExists(Paths.get("D:\\Users\\callicoder\\uploads\\"+localFileDetails.getFileName()));
+				Files.deleteIfExists(Paths.get(environment.getProperty("fileLocal.upload-dir")+localFileDetails.getFileName()));
 				localFileDetails.setFileName(file.getOriginalFilename());
 				
 			} else {
@@ -98,7 +102,7 @@ public class FileController {
 			if (fileData.isPresent()) {
 				localFileDetails=fileData.get();
 				if(!updatedFileName.equals(localFileDetails.getFileName().split("\\.")[0])){
-					Path source = Paths.get("D:\\Users\\callicoder\\uploads\\"+localFileDetails.getFileName());
+					Path source = Paths.get(environment.getProperty("fileLocal.upload-dir")+localFileDetails.getFileName());
 					Files.move(source, source.resolveSibling(updatedFileName+"."+localFileDetails.getFileName().split("\\.")[1]));
 					localFileDetails.setFileName(updatedFileName+"."+localFileDetails.getFileName().split("\\.")[1]);
 					localFileRepository.save(localFileDetails);
@@ -128,7 +132,7 @@ public class FileController {
 			LocalFileDetails localFileDetails=null;
 			if (fileData.isPresent()) {
 				localFileDetails=fileData.get();
-				Files.deleteIfExists(Paths.get("D:\\Users\\callicoder\\uploads\\"+localFileDetails.getFileName()));
+				Files.deleteIfExists(Paths.get(environment.getProperty("fileLocal.upload-dir")+localFileDetails.getFileName()));
 				localFileRepository.delete(localFileDetails);
 			} else {
 				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
